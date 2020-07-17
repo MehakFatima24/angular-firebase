@@ -13,7 +13,8 @@ export class AdapterService {
 
   saveNote(note) {
     const userId = this.userservice.getUserId();
-    firebase.database().ref('/notes/' + userId).set({note});
+    firebase.database().ref('/notes/' + userId).set({note})
+    .catch((error) => {console.log(error); });
   }
 
   getNote(callback) {
@@ -23,7 +24,8 @@ export class AdapterService {
     .then((snapshot) => {
       const note = (snapshot.val()) ? snapshot.val().note : '';
       callback(note);
-    });
+    })
+    .catch((error) => {console.log(error); });
   }
 
 }

@@ -9,8 +9,8 @@ import { MainComponent } from './views/main/main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {AngularFireDatabaseModule, AngularFireDatabase} from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 
@@ -26,6 +26,10 @@ import { KatexModule } from 'ng-katex';
 import { OauthService } from './services/oauth/oauth.service';
 import { AdapterService } from './services/adapter/adapter.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { JwtService } from './services/jwt/jwt.service';
+import { UserService } from './services/user/user.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,10 +49,19 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
     MatButtonModule,
     MatProgressSpinnerModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     NgxUiLoaderModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [OauthService, AdapterService, AuthGuardService, AngularFireDatabase],
+  providers: [
+    OauthService,
+    AdapterService,
+    AuthGuardService,
+    JwtService,
+    UserService,
+    NgxUiLoaderService,
+    AngularFireDatabase
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
