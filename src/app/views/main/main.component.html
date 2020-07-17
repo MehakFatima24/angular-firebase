@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <span>LaTex Editor</span>
+    <span class="example-spacer"></span>
+    <span>Welcome! {{username}}</span>
+    <button mat-icon-button class="example-icon" (click)="signOut()">
+      <mat-icon>login</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-card class="card">
+    <mat-card-content>        
+        <div class='mt-3'>
+            <div class='row justify-content-center'>
+                <div #editable class='col-6 shadow outline editor' style='min-height: 85vh;'></div>
+                <ng-template [ngIf]="editor">
+                <ng-katex-paragraph [paragraph]="paragraphValue" class="shadow col-6 outline"></ng-katex-paragraph>
+                </ng-template>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<ngx-ui-loader></ngx-ui-loader>
